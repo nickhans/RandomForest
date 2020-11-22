@@ -1,0 +1,13 @@
+#.gitignore
+
+# vscode config
+.vscode/
+
+# binary
+final
+
+# object files
+*.o
+
+# unnecessary documents
+docs/
