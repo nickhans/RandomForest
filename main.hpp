@@ -14,6 +14,7 @@
 #include "camera.hpp"
 #include "error.hpp"
 #include "input.hpp"
+#include "light.hpp"
 #include "renderer.hpp"
 #include "util.hpp"
 
@@ -21,6 +22,7 @@ class GameManager {
  public:
   Camera camera;
   Renderer renderer;
+  Light light;
 
   GameManager();
   ~GameManager();

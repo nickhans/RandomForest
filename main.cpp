@@ -1,6 +1,6 @@
 #include "main.hpp"
 
-GameManager::GameManager() : camera(), renderer() {
+GameManager::GameManager() : camera(), renderer(), light() {
   _window = nullptr;
   _windowWidth = 1024;
   _windowHeight = 768;
@@ -56,6 +56,7 @@ void GameManager::display() {
   glPushMatrix();
   camera.set_eye_position();
   // set lighting
+  light.set_light();
   // std::cout << "DISPLAY: " << renderer.tree.limbs.length << std::endl;
   renderer.render_scene();
   // std::cout << "SQUARE" << std::endl;
