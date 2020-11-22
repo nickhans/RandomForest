@@ -36,7 +36,7 @@ Tree::Tree(float _x, float _y, float _z, float _h, float _w, int _s, int _lc)
     limbs.push_back(new LimbData(h_dist(rng), t_dist(rng), r_dist(rng),
                                  w_dist(rng), l_dist(rng)));
   }
-  std::cout << "LIMBVEC LEN: " << limbs.size() << std::endl;
+
   slices = _s;
   limb_count = _lc;
 }
@@ -55,22 +55,27 @@ void Tree::trunk() {
   glColor3f(0.627, 0.322, 0.176);
   // glColor3f(1, 0, 0);
   float r = width / 2.0;
+  float r_scale = 0.5;
   for (int i = 0; i <= slices; i++) {
     float th = ((float)i / slices) * 2.0 * M_PI;
-    glVertex3f(r * 0.5 * cosf(th), height, r * 0.5 * sinf(th));
+    glVertex3f(r * r_scale * cosf(th), height, r * r_scale * sinf(th));
+    glNormal3f(r * r_scale * cosf(th), height, r * r_scale * sinf(th));
     glVertex3f(r * cosf(th), 0.0, r * sinf(th));
+    glNormal3f(r * cosf(th), 0.0, r * sinf(th));
   }
   glEnd();
   glBegin(GL_TRIANGLE_FAN);
   for (int i = 0; i <= slices; i++) {
     float th = ((float)i / slices) * 2.0 * M_PI;
-    glVertex3f(r * 0.5 * cosf(th), height, r * 0.5 * sinf(th));
+    glVertex3f(r * r_scale * cosf(th), height, r * r_scale * sinf(th));
+    glNormal3f(0.0, 1.0, 0.0);
   }
   glEnd();
   glBegin(GL_TRIANGLE_FAN);
   for (int i = 0; i <= slices; i++) {
     float th = ((float)i / slices) * 2.0 * M_PI;
     glVertex3f(r * cosf(th), 0.0, r * sinf(th));
+    glNormal3f(0.0, -1.0, 0.0);
   }
   glEnd();
   glPopMatrix();
@@ -82,6 +87,7 @@ void Tree::limb(float y,
                 float width,
                 float length) {
   float r = width / 2.0;
+  float r_scale = 0.5;
   glPushMatrix();
   glTranslatef(0.0, y - r, 0.0);
   // rotation around trunk
@@ -92,20 +98,24 @@ void Tree::limb(float y,
   glColor3f(0.627, 0.322, 0.176);
   for (int i = 0; i <= slices; i++) {
     float th = ((float)i / slices) * 2.0 * M_PI;
-    glVertex3f(r * 0.5 * cosf(th), length, r * 0.5 * sinf(th));
+    glVertex3f(r * r_scale * cosf(th), length, r * r_scale * sinf(th));
+    glNormal3f(r * r_scale * cosf(th), length, r * r_scale * sinf(th));
     glVertex3f(r * cosf(th), 0.0, r * sinf(th));
+    glNormal3f(r * cosf(th), 0.0, r * sinf(th));
   }
   glEnd();
   glBegin(GL_TRIANGLE_FAN);
   for (int i = 0; i <= slices; i++) {
     float th = ((float)i / slices) * 2.0 * M_PI;
-    glVertex3f(r * 0.5 * cosf(th), length, r * 0.5 * sinf(th));
+    glVertex3f(r * r_scale * cosf(th), length, r * r_scale * sinf(th));
+    glNormal3f(0.0, 1.0, 0.0);
   }
   glEnd();
   glBegin(GL_TRIANGLE_FAN);
   for (int i = 0; i <= slices; i++) {
     float th = ((float)i / slices) * 2.0 * M_PI;
     glVertex3f(r * cosf(th), 0.0, r * sinf(th));
+    glNormal3f(0.0, -1.0, 0.0);
   }
   glEnd();
   glPopMatrix();
