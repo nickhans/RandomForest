@@ -18,7 +18,6 @@
 class Renderer {
  public:
   // Tree tree;
-  std::vector<Tree*> trees;
 
   Renderer();
   ~Renderer();
@@ -27,6 +26,7 @@ class Renderer {
 
  private:
   void render_axis();
+  std::vector<Tree*> trees;
 };
 
 #endif
