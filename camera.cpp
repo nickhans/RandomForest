@@ -5,10 +5,10 @@ Camera::Camera() {
   _asp = 1;
   _dim = 10;
   _th = 0;
-  _ph = 0;
-  _Ex = -2 * _dim * Sin(_th) * Cos(_ph);
-  _Ey = 2 * _dim * Sin(_ph);
-  _Ez = 2 * _dim * Cos(_th) * Sin(_ph);
+  _ph = 30;
+  _Ex = -40 * _dim * Sin(_th) * Cos(_ph);
+  _Ey = 40 * _dim * Sin(_ph);
+  _Ez = 40 * _dim * Cos(_th) * Sin(_ph);
 }
 
 void Camera::project() {
