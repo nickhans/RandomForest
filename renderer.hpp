@@ -9,9 +9,10 @@
 #ifdef __APPLE__
 #include <GLUT/glut.h>
 #else
-#include <GLUT/glut.h>
+#include <GL/glut.h>
 #endif
 
+#include "terrain.hpp"
 #include "time.hpp"
 #include "tree.hpp"
 
@@ -26,6 +27,7 @@ class Renderer {
 
  private:
   void render_axis();
+  Terrain* terrain;
   std::vector<Tree*> trees;
 };
 

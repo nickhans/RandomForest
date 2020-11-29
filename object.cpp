@@ -1,11 +1,11 @@
 #include "object.hpp"
 
 Object::Object() {
-  x = 0;
-  y = 0;
-  z = 0;
-  height = 1;
-  width = 1;
+  x = 0.0f;
+  y = 0.0f;
+  z = 0.0f;
+  height = 1.0f;
+  width = 1.0f;
 }
 
 Object::Object(float _x, float _y, float _z, float _h, float _w) {
@@ -17,7 +17,7 @@ Object::Object(float _x, float _y, float _z, float _h, float _w) {
 }
 
 Object::~Object() {
-  std::cout << "OBJECT DESTRUCTOR" << std::endl;
+  // std::cout << "OBJECT DESTRUCTOR" << std::endl;
 }
 
 void Object::set_height(float h) {

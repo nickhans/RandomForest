@@ -5,7 +5,7 @@
 #ifdef __APPLE__
 #include <GLUT/glut.h>
 #else
-#include <GLUT/glut.h>
+#include <GL/glut.h>
 #endif
 
 #include "util.hpp"

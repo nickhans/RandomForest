@@ -3,16 +3,16 @@
 Light::Light() {
   on = true;
   distance = 30;
-  emission = 0.05;
-  ambient = 0.1;
-  diffuse = 0.5;
-  specular = 0.05;
+  emission = 0.05f;
+  ambient = 0.1f;
+  diffuse = 0.5f;
+  specular = 0.05f;
   shininess = 1;
   azimuth = 180;
-  elevation = 5.0;
+  elevation = 20.0f;
   x = distance * Cos(azimuth);
   z = distance * Sin(azimuth);
-  r = 0.5;
+  r = 0.5f;
 }
 
 void Light::set_light() {
@@ -40,12 +40,12 @@ void Light::set_light() {
 }
 
 void Light::sun() {
-  float color[] = {1.0, 1.0, 0.0, 1.0};
-  float e_color[] = {0.0, 0.0, emission, 1.0};
+  float color[] = {1.0f, 1.0f, 0.0f, 1.0f};
+  float e_color[] = {0.0, 0.0, emission, 1.0f};
   glPushMatrix();
   glTranslatef(x, elevation, z);
   glScalef(r, r, r);
-  glColor3f(1.0, 1.0, 1.0);
+  glColor3f(1.0f, 1.0f, 1.0f);
   glMaterialf(GL_FRONT, GL_SHININESS, shininess);
   glMaterialfv(GL_FRONT, GL_SPECULAR, color);
   glMaterialfv(GL_FRONT, GL_EMISSION, e_color);
