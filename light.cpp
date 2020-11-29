@@ -9,7 +9,7 @@ Light::Light() {
   specular = 0.05;
   shininess = 1;
   azimuth = 180;
-  elevation = 5.0;
+  elevation = 20.0;
   x = distance * Cos(azimuth);
   z = distance * Sin(azimuth);
   r = 0.5;
