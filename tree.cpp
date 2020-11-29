@@ -1,11 +1,11 @@
 #include "tree.hpp"
 
 LimbData::LimbData() {
-  height = 0;
-  tilt = 0;
-  rotation = 0;
-  width = 10;
-  length = 20;
+  height = 0.0f;
+  tilt = 0.0f;
+  rotation = 0.0f;
+  width = 10.0f;
+  length = 20.0f;
 }
 
 LimbData::LimbData(float h, float t, float r, float w, float l) {
@@ -20,7 +20,7 @@ LimbData::~LimbData() {
   // std::cout << "LIMB DESTRUCTOR" << std::endl;
 }
 
-Tree::Tree() : Object(0, 0, 0, 5, 1) {
+Tree::Tree() : Object(0.0f, 0.0f, 0.0f, 5.0f, 1.0f) {
   slices = 15;
 }
 
@@ -52,30 +52,30 @@ void Tree::trunk() {
   glPushMatrix();
   glBegin(GL_TRIANGLE_STRIP);
   // brown 0.627, 0.322, 0.176
-  glColor3f(0.627, 0.322, 0.176);
+  glColor3f(0.627f, 0.322f, 0.176f);
   // glColor3f(1, 0, 0);
-  float r = width / 2.0;
-  float r_scale = 0.5;
+  float r = width / 2.0f;
+  float r_scale = 0.5f;
   for (int i = 0; i <= slices; i++) {
-    float th = ((float)i / slices) * 2.0 * M_PI;
+    float th = ((float)i / slices) * 2.0f * M_PI;
     glVertex3f(r * r_scale * cosf(th), height, r * r_scale * sinf(th));
     glNormal3f(r * r_scale * cosf(th), height, r * r_scale * sinf(th));
-    glVertex3f(r * cosf(th), 0.0, r * sinf(th));
-    glNormal3f(r * cosf(th), 0.0, r * sinf(th));
+    glVertex3f(r * cosf(th), 0.0f, r * sinf(th));
+    glNormal3f(r * cosf(th), 0.0f, r * sinf(th));
   }
   glEnd();
   glBegin(GL_TRIANGLE_FAN);
   for (int i = 0; i <= slices; i++) {
-    float th = ((float)i / slices) * 2.0 * M_PI;
+    float th = ((float)i / slices) * 2.0f * M_PI;
     glVertex3f(r * r_scale * cosf(th), height, r * r_scale * sinf(th));
-    glNormal3f(0.0, 1.0, 0.0);
+    glNormal3f(0.0f, 1.0f, 0.0f);
   }
   glEnd();
   glBegin(GL_TRIANGLE_FAN);
   for (int i = 0; i <= slices; i++) {
-    float th = ((float)i / slices) * 2.0 * M_PI;
+    float th = ((float)i / slices) * 2.0f * M_PI;
     glVertex3f(r * cosf(th), 0.0, r * sinf(th));
-    glNormal3f(0.0, -1.0, 0.0);
+    glNormal3f(0.0f, -1.0f, 0.0f);
   }
   glEnd();
   glPopMatrix();
@@ -86,36 +86,36 @@ void Tree::limb(float y,
                 float rotation,
                 float width,
                 float length) {
-  float r = width / 2.0;
-  float r_scale = 0.5;
+  float r = width / 2.0f;
+  float r_scale = 0.5f;
   glPushMatrix();
-  glTranslatef(0.0, y - r, 0.0);
+  glTranslatef(0.0f, y - r, 0.0f);
   // rotation around trunk
-  glRotatef(rotation, 0.0, 1.0, 0.0);
+  glRotatef(rotation, 0.0f, 1.0f, 0.0f);
   // tilt down
-  glRotatef(tilt, 0.0, 0.0, 1.0);
+  glRotatef(tilt, 0.0f, 0.0f, 1.0f);
   glBegin(GL_TRIANGLE_STRIP);
-  glColor3f(0.627, 0.322, 0.176);
+  glColor3f(0.627f, 0.322f, 0.176f);
   for (int i = 0; i <= slices; i++) {
     float th = ((float)i / slices) * 2.0 * M_PI;
     glVertex3f(r * r_scale * cosf(th), length, r * r_scale * sinf(th));
     glNormal3f(r * r_scale * cosf(th), length, r * r_scale * sinf(th));
-    glVertex3f(r * cosf(th), 0.0, r * sinf(th));
-    glNormal3f(r * cosf(th), 0.0, r * sinf(th));
+    glVertex3f(r * cosf(th), 0.0f, r * sinf(th));
+    glNormal3f(r * cosf(th), 0.0f, r * sinf(th));
   }
   glEnd();
   glBegin(GL_TRIANGLE_FAN);
   for (int i = 0; i <= slices; i++) {
-    float th = ((float)i / slices) * 2.0 * M_PI;
+    float th = ((float)i / slices) * 2.0f * M_PI;
     glVertex3f(r * r_scale * cosf(th), length, r * r_scale * sinf(th));
-    glNormal3f(0.0, 1.0, 0.0);
+    glNormal3f(0.0f, 1.0f, 0.0f);
   }
   glEnd();
   glBegin(GL_TRIANGLE_FAN);
   for (int i = 0; i <= slices; i++) {
-    float th = ((float)i / slices) * 2.0 * M_PI;
-    glVertex3f(r * cosf(th), 0.0, r * sinf(th));
-    glNormal3f(0.0, -1.0, 0.0);
+    float th = ((float)i / slices) * 2.0f * M_PI;
+    glVertex3f(r * cosf(th), 0.0f, r * sinf(th));
+    glNormal3f(0.0f, -1.0f, 0.0f);
   }
   glEnd();
   glPopMatrix();

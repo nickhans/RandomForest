@@ -10,7 +10,7 @@ Renderer::Renderer() {
   terrain = new Terrain();
 
   for (int i = 0; i < 100; i++) {
-    trees.push_back(new Tree(x_dist(rng), 0, z_dist(rng), h_dist(rng),
+    trees.push_back(new Tree(x_dist(rng), 0.0f, z_dist(rng), h_dist(rng),
                              w_dist(rng), 15, l_dist(rng)));
   }
   // trees.push_back(new Tree(0, 0, 0, h_dist(rng), w_dist(rng), 15,
@@ -39,7 +39,7 @@ void Renderer::render_scene() {
 
 void Renderer::render_axis() {
   glBegin(GL_LINES);
-  glColor3f(1.0, 1.0, 1.0);
+  glColor3f(1.0f, 1.0f, 1.0f);
   glVertex3d(0.0, 0.0, 0.0);
   glVertex3d(20.0, 0.0, 0.0);
   glVertex3d(0.0, 0.0, 0.0);

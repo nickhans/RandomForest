@@ -8,8 +8,8 @@ GameManager::GameManager() : camera(), renderer(), light() {
 
   SDL_Init(SDL_INIT_VIDEO);
 
-  // SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-  _window = SDL_CreateWindow("A Trip Through The Woods | Nick Hanselman",
+  SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+  _window = SDL_CreateWindow("Random Forest | Nick Hanselman",
                              SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                              _windowWidth, _windowHeight,
                              SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
@@ -51,7 +51,7 @@ void GameManager::processInput() {
 
 void GameManager::display() {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  glClearColor(0.275, 0.510, 0.706, 1.0);
+  glClearColor(0.275f, 0.510f, 0.706f, 1.0f);
   glEnable(GL_DEPTH_TEST);
   glLoadIdentity();
   glPushMatrix();
