@@ -17,7 +17,7 @@ Object::Object(float _x, float _y, float _z, float _h, float _w) {
 }
 
 Object::~Object() {
-  std::cout << "OBJECT DESTRUCTOR" << std::endl;
+  // std::cout << "OBJECT DESTRUCTOR" << std::endl;
 }
 
 void Object::set_height(float h) {

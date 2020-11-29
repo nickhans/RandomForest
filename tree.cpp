@@ -17,7 +17,7 @@ LimbData::LimbData(float h, float t, float r, float w, float l) {
 }
 
 LimbData::~LimbData() {
-  std::cout << "LIMB DESTRUCTOR" << std::endl;
+  // std::cout << "LIMB DESTRUCTOR" << std::endl;
 }
 
 Tree::Tree() : Object(0, 0, 0, 5, 1) {
@@ -26,11 +26,11 @@ Tree::Tree() : Object(0, 0, 0, 5, 1) {
 
 Tree::Tree(float _x, float _y, float _z, float _h, float _w, int _s, int _lc)
     : Object(_x, _y, _z, _h, _w) {
-  std::uniform_real_distribution<float> h_dist(height * 0.2, height);
-  std::uniform_real_distribution<float> t_dist(30.0, 80.0);
-  std::uniform_real_distribution<float> r_dist(0.0, 359.0);
-  std::uniform_real_distribution<float> w_dist(width * 0.4, width * 0.7);
-  std::uniform_real_distribution<float> l_dist(height * 0.2, height * 0.5);
+  std::uniform_real_distribution<float> h_dist(height * 0.2f, height);
+  std::uniform_real_distribution<float> t_dist(30.0f, 80.0f);
+  std::uniform_real_distribution<float> r_dist(0.0f, 359.0f);
+  std::uniform_real_distribution<float> w_dist(width * 0.3f, width * 0.5f);
+  std::uniform_real_distribution<float> l_dist(height * 0.2f, height * 0.4f);
 
   for (int i = 0; i < _lc; i++) {
     limbs.push_back(new LimbData(h_dist(rng), t_dist(rng), r_dist(rng),
@@ -45,7 +45,7 @@ Tree::~Tree() {
   for (LimbData* l : limbs) {
     delete l;
   }
-  std::cout << "TREE DESTRUCTOR" << std::endl;
+  // std::cout << "TREE DESTRUCTOR" << std::endl;
 }
 
 void Tree::trunk() {
