@@ -24,6 +24,7 @@ CLEAN=rm -f $(EXE) *.o *.a
 endif
 
 # Dependencies
+terrain.o: terrain.cpp terrain.hpp
 light.o: light.cpp light.hpp
 tree.o: tree.cpp tree.hpp time.hpp
 object.o: object.cpp object.hpp
@@ -38,7 +39,7 @@ main.o: main.cpp main.hpp util.hpp
 	g++ -c -std=c++11 $(CFLG) $<
 
 #  Link
-final: main.o camera.o error.o input.o renderer.o object.o tree.o light.o
+final: main.o camera.o error.o input.o renderer.o object.o tree.o light.o terrain.o
 	g++ -O3 -o $@ $^ $(LIBS) -lSDL2 -lSDL2_mixer
 
 #  Clean

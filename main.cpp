@@ -51,6 +51,7 @@ void GameManager::processInput() {
 
 void GameManager::display() {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  glClearColor(0.275, 0.510, 0.706, 1.0);
   glEnable(GL_DEPTH_TEST);
   glLoadIdentity();
   glPushMatrix();
