@@ -40,7 +40,7 @@ main.o: main.cpp main.hpp util.hpp
 
 #  Link
 final: main.o camera.o error.o input.o renderer.o object.o tree.o light.o terrain.o
-	g++ -O3 -o $@ $^ $(LIBS) -lSDL2 -lSDL2_mixer
+	g++ -O3 -o $@ $^ $(LIBS) -lSDL2 -lSDL2_image
 
 #  Clean
 clean:
