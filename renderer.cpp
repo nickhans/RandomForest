@@ -1,20 +1,23 @@
 #include "renderer.hpp"
 
-Renderer::Renderer() {
+Renderer::Renderer() : texture() {
   std::uniform_real_distribution<float> x_dist(-28.0f, 28.0f);
   std::uniform_real_distribution<float> z_dist(-28.0f, 28.0f);
   std::uniform_real_distribution<float> h_dist(5.0f, 8.0f);
   std::uniform_real_distribution<float> w_dist(0.5f, 1.0f);
   std::uniform_int_distribution<int> l_dist(8, 15);
 
-  terrain = new Terrain();
+  terrain = new Terrain(texture.grass);
+  std::cout << "TEXTURE: " << texture.leaf << std::endl;
 
   for (int i = 0; i < 100; i++) {
     trees.push_back(new Tree(x_dist(rng), 0.0f, z_dist(rng), h_dist(rng),
-                             w_dist(rng), 15, l_dist(rng)));
+                             w_dist(rng), 15, l_dist(rng), texture.bark,
+                             texture.leaf));
   }
   // trees.push_back(new Tree(0, 0, 0, h_dist(rng), w_dist(rng), 15,
-  // l_dist(rng)));
+  // l_dist(rng),
+  //                          texture.bark, texture.leaf));
   std::cout << "Tree Count: " << trees.size() << std::endl;
 }
 
@@ -28,13 +31,11 @@ Renderer::~Renderer() {
 }
 
 void Renderer::render_scene() {
-  // do something
   terrain->render();
-
   for (Tree* tree : trees) {
     tree->render();
   }
-  // render_axis();
+  // trees[0]->render();
 }
 
 void Renderer::render_axis() {

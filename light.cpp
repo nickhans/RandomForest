@@ -5,7 +5,7 @@ Light::Light() {
   distance = 30;
   emission = 0.05f;
   ambient = 0.1f;
-  diffuse = 0.5f;
+  diffuse = 0.7f;
   specular = 0.05f;
   shininess = 1;
   azimuth = 180;
@@ -40,7 +40,7 @@ void Light::set_light() {
 }
 
 void Light::sun() {
-  float color[] = {1.0f, 1.0f, 0.0f, 1.0f};
+  float color[] = {1.0f, 1.0f, 1.0f, 1.0f};
   float e_color[] = {0.0, 0.0, emission, 1.0f};
   glPushMatrix();
   glTranslatef(x, elevation, z);

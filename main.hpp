@@ -21,8 +21,8 @@
 class GameManager {
  public:
   Camera camera;
-  Renderer renderer;
   Light light;
+  Renderer* renderer;
 
   GameManager();
   ~GameManager();

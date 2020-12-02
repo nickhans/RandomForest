@@ -13,6 +13,7 @@
 class Terrain {
  public:
   Terrain();
+  Terrain(GLuint texture);
   ~Terrain();
 
   void render();
@@ -21,6 +22,8 @@ class Terrain {
   float length;
   float width;
   float height;
+
+  GLuint texture;
 };
 
 #endif

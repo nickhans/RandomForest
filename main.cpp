@@ -1,6 +1,6 @@
 #include "main.hpp"
 
-GameManager::GameManager() : camera(), renderer(), light() {
+GameManager::GameManager() : camera(), light() {
   _window = nullptr;
   _windowWidth = 1024;
   _windowHeight = 768;
@@ -19,9 +19,17 @@ GameManager::GameManager() : camera(), renderer(), light() {
   _context = SDL_GL_CreateContext(_window);
   if (!_context)
     fatalError("SDL GL Context Could Not Be Created.");
+
+  renderer = new Renderer();
+
+  if (!renderer) {
+    std::cerr << "ERROR: Could not initialize RENDERER" << std::endl;
+    exit(1);
+  }
 }
 
 GameManager::~GameManager() {
+  delete renderer;
   SDL_GL_DeleteContext(_context);
   SDL_DestroyWindow(_window);
   std::cout << "GAMEMANAGER DESTRUCTOR" << std::endl;
@@ -59,7 +67,7 @@ void GameManager::display() {
   // set lighting
   light.set_light();
   // std::cout << "DISPLAY: " << renderer.tree.limbs.length << std::endl;
-  renderer.render_scene();
+  renderer->render_scene();
   // std::cout << "SQUARE" << std::endl;
   glPopMatrix();
   glFlush();
@@ -78,6 +86,7 @@ void GameManager::reshape() {
 
 void GameManager::run() {
   // std::cout << "RUN: " << renderer.tree.limbs.length << std::endl;
+
   reshape();
   while (_gameRunning) {
     processInput();
