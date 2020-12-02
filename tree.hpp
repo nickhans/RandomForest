@@ -38,7 +38,9 @@ class Tree : public Object {
        float height,
        float width,
        int slices,
-       int limb_count);
+       int limb_count,
+       GLuint bark_tex,
+       GLuint leaf_text);
   ~Tree();
 
   void render();
@@ -49,8 +51,12 @@ class Tree : public Object {
   int slices;
   int limb_count;
 
+  GLuint bark_tex;
+  GLuint leaf_tex;
+
   void trunk();
   void limb(float y, float tilt, float rotation, float width, float length);
+  void leaves(float length, float width);
 };
 
 #endif

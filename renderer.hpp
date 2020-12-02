@@ -13,12 +13,13 @@
 #endif
 
 #include "terrain.hpp"
+#include "texture.hpp"
 #include "time.hpp"
 #include "tree.hpp"
 
 class Renderer {
  public:
-  // Tree tree;
+  TextureManager texture;
 
   Renderer();
   ~Renderer();
@@ -26,9 +27,10 @@ class Renderer {
   void render_scene();
 
  private:
-  void render_axis();
   Terrain* terrain;
   std::vector<Tree*> trees;
+
+  void render_axis();
 };
 
 #endif
